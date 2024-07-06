@@ -38,7 +38,7 @@ class _SignUpFormState extends State<SignUpForm> {
     );
 
     if (response['status'] == 200) {
-      Navigator.pushReplacementNamed(context, '/main');
+      Navigator.pushReplacementNamed(context, '/home');
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Failed to sign up")));
