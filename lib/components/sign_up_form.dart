@@ -3,6 +3,7 @@ import 'custom_text_field.dart'; // 커스텀 텍스트 필드 임포트
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../utils/api_service.dart';
+import 'custom_button.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -84,12 +85,12 @@ class _SignUpFormState extends State<SignUpForm> {
             controller: confirmPasswordController,
             obscureText: true),
         CustomTextField(label: 'Code', controller: codeController),
-        SizedBox(height: 20),
+        SizedBox(height: 24),
         isLoading
             ? CircularProgressIndicator()
-            : ElevatedButton(
+            : CustomButton(
+                text: 'Sign Up',
                 onPressed: signUp,
-                child: Text('Sign up'),
               ),
       ],
     );
