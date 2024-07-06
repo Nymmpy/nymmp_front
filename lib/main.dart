@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'My Web App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color(0xFFF0F4C3),
+        scaffoldBackgroundColor: Color(0xFFFFFFFF),
       ),
       initialRoute: '/home',
       routes: {
