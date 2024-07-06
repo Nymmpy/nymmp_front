@@ -12,7 +12,7 @@ class GroupTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double maxWidth = constraints.maxWidth ; // 좌우 패딩을 고려한 최대 너비
+        double maxWidth = constraints.maxWidth; // 좌우 패딩을 고려한 최대 너비
         return Container(
           width: maxWidth,
           height: 125,
@@ -43,12 +43,14 @@ class GroupTap extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/poll', arguments: groupId);
+                        Navigator.pushNamed(context, '/poll',
+                            arguments: groupId);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white, // 버튼 배경을 흰색으로 설정
                         minimumSize: Size(40, 40), // 버튼 크기 설정
-                        side: BorderSide(color: Colors.black, width: 1), // 얇은 검은색 테두리
+                        side: BorderSide(
+                            color: Colors.black, width: 1), // 얇은 검은색 테두리
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8), // 모서리 반경 설정
                         ),
@@ -62,12 +64,14 @@ class GroupTap extends StatelessWidget {
                     SizedBox(height: 10), // 버튼 사이 간격
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/group', arguments: groupId);
+                        Navigator.pushNamed(context, '/group',
+                            arguments: groupId);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white, // 버튼 배경을 흰색으로 설정
                         minimumSize: Size(40, 40), // 버튼 크기 설정
-                        side: BorderSide(color: Colors.black, width: 1), // 얇은 검은색 테두리
+                        side: BorderSide(
+                            color: Colors.black, width: 1), // 얇은 검은색 테두리
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8), // 모서리 반경 설정
                         ),
