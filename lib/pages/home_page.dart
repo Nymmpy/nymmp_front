@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/custom_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -9,13 +10,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
+            CustomButton(
+              text: 'Sign In',
               onPressed: () => Navigator.pushNamed(context, '/login'),
-              child: Text('Sign In'),
             ),
-            ElevatedButton(
+            SizedBox(height: 24),
+            CustomButton(
+              text: 'Create an Account',
               onPressed: () => Navigator.pushNamed(context, '/signup'),
-              child: Text('Create an Account'),
             ),
           ],
         ),
