@@ -9,7 +9,7 @@ class GroupTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/group/', arguments: groupId);
+        Navigator.pushNamed(context, '/group', arguments: groupId);
       },
       child: Container(
         padding: EdgeInsets.all(16.0),

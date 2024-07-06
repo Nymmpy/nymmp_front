@@ -18,17 +18,38 @@ class MyApp extends StatelessWidget {
       title: 'My Web App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color(0xFFF0F4C3), // 파스텔톤 배경색 설정
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+        scaffoldBackgroundColor: Color(0xFFF0F4C3),
       ),
       initialRoute: '/',
-      routes: {
-        '/': (context) => LoginPage(),
-        '/main': (context) => MainPage(),
-        '/poll/:pollId': (context) => PollPage(pollId: "1",),
-        '/group/:groupId': (context) => GroupPage(groupId: "1",),
-        '/result/:groupId': (context) => ResultPage(groupId: "1",),
-        '/mypage': (context) => MyPage(),
+      onGenerateRoute: (settings) {
+        if (settings.name == '/group') {
+          final args = settings.arguments as int;
+          return MaterialPageRoute(
+            builder: (context) => GroupPage(groupId: args),
+          );
+        } else if (settings.name == '/poll') {
+          final args = settings.arguments as int;
+          return MaterialPageRoute(
+            builder: (context) => PollPage(pollId: args),
+          );
+        } else if (settings.name == '/result') {
+          final args = settings.arguments as int;
+          return MaterialPageRoute(
+            builder: (context) => ResultPage(groupId: args),
+          );
+        }
+
+        // 기본 라우팅 처리
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (context) => LoginPage());
+          case '/main':
+            return MaterialPageRoute(builder: (context) => MainPage());
+          case '/mypage':
+            return MaterialPageRoute(builder: (context) => MyPage());
+          default:
+            return null;
+        }
       },
     );
   }

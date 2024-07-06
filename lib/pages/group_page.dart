@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import '../components/header.dart';
 
 class GroupPage extends StatelessWidget {
-  final String groupId;
+  final int groupId;
 
   GroupPage({required this.groupId});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('그룹 $groupId 페이지')),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0),
+        child: Header(isMyPage: false),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -18,13 +22,13 @@ class GroupPage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/vote');
+                Navigator.pushNamed(context, '/poll', arguments: groupId);
               },
               child: Text('투표'),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/result/$groupId');
+                Navigator.pushNamed(context, '/result', arguments: groupId);
               },
               child: Text('결과 보기'),
             ),

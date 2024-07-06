@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PollPage extends StatelessWidget {
-  final String pollId;
+  final int pollId;
 
   PollPage({required this.pollId});
 
