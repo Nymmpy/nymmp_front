@@ -31,7 +31,7 @@ class CustomTextField extends StatelessWidget {
           SizedBox(height: 8),
           Container(
             width: 250, // Matching width with CustomButton
-            height: 50, // Matching height with CustomButton
+            height: 35, // Matching height with CustomButton
             child: TextField(
               controller: controller,
               obscureText: obscureText,
@@ -50,7 +50,7 @@ class CustomTextField extends StatelessWidget {
                 fillColor: Colors.white, // Background color
               ),
               style: TextStyle(
-                fontSize: 22, // Font size matching button text
+                fontSize: 18, // Font size matching button text
                 color: Colors.black, // Text color
               ),
             ),

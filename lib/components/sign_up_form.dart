@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'custom_text_field.dart'; // 커스텀 텍스트 필드 임포트
+import 'custom_text_field.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../utils/api_service.dart';
@@ -17,12 +17,11 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-  final TextEditingController codeController =
-      TextEditingController(); // 코드 입력 컨트롤러 추가
+  final TextEditingController codeController = TextEditingController();
   final ApiService apiService = ApiService();
 
-  String selectedGroup = 'Group 1'; // 예시 그룹, 초기값 설정
-  bool isLoading = false; // 로딩 상태 표시
+  String selectedGroup = 'Group 1';
+  bool isLoading = false;
 
   void signUp() async {
     setState(() {
@@ -54,6 +53,7 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center, // 가로 방향 중앙 정렬 추가
       children: <Widget>[
         CustomTextField(label: 'ID', controller: idController),
         DropdownButton<String>(

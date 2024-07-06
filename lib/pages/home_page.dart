@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
               text: 'Sign In',
               onPressed: () => Navigator.pushNamed(context, '/login'),
             ),
+            SizedBox(height: 24),
             CustomButton(
               text: 'Create an Account',
               onPressed: () => Navigator.pushNamed(context, '/signup'),
