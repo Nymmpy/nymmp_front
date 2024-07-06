@@ -6,7 +6,10 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign Up')),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0), // 헤더 높이 설정
+        child: Header(isMyPage: false), // isMyPage는 헤더 컴포넌트에 구현된 특정 조건을 위한 플래그
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         child: Column(
