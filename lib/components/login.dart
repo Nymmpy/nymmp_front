@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
         passwordController.text,
       );
       if (response['success']) {
-        Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacementNamed(context, '/main');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
