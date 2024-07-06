@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'pages/home_page.dart';
 import 'pages/login_page.dart';
+import 'pages/signup_page.dart';
 import 'pages/main_page.dart';
 import 'pages/group_page.dart';
 import 'pages/poll_page.dart';
@@ -19,13 +21,18 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Color(0xFFF0F4C3),
       ),
-      initialRoute: '/',
+      initialRoute: '/home',
       routes: {
-        '/': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
+        // '/signup': (context) => SignUpPage(),
         '/main': (context) => MainPage(),
-        '/group': (context) => GroupPage(groupId: ModalRoute.of(context)!.settings.arguments as int),
-        '/poll': (context) => PollPage(pollId: ModalRoute.of(context)!.settings.arguments as int),
-        '/result': (context) => ResultPage(groupId: ModalRoute.of(context)!.settings.arguments as int),
+        '/group': (context) => GroupPage(
+            groupId: ModalRoute.of(context)!.settings.arguments as int),
+        '/poll': (context) =>
+            PollPage(pollId: ModalRoute.of(context)!.settings.arguments as int),
+        '/result': (context) => ResultPage(
+            groupId: ModalRoute.of(context)!.settings.arguments as int),
         '/mypage': (context) => MyPage(),
       },
     );
