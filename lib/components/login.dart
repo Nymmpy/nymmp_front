@@ -1,6 +1,7 @@
 // lib/components/login.dart
 import 'package:flutter/material.dart';
-import '../utils/api_service.dart';
+import '../utils/api_service.dart'; // API 서비스 경로 확인 필요
+import 'custom_text_field.dart'; // CustomTextField 임포트
 
 class Login extends StatefulWidget {
   @override
@@ -19,14 +20,15 @@ class _LoginState extends State<Login> {
         passwordController.text,
       );
       if (response['success']) {
-        Navigator.pushReplacementNamed(context, '/main');
+        Navigator.pushReplacementNamed(context, '/home');
       } else {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Login failed')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(
+                'Login failed. Please check your credentials and try again.')));
       }
     } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error: $e')));
+          .showSnackBar(SnackBar(content: Text('Login Error: $e')));
     }
   }
 
@@ -35,13 +37,16 @@ class _LoginState extends State<Login> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        TextField(
+        CustomTextField(
+          label: 'Email',
           controller: emailController,
-          decoration: InputDecoration(labelText: 'Email'),
+          hintText: 'Enter your email',
+          keyboardType: TextInputType.emailAddress,
         ),
-        TextField(
+        CustomTextField(
+          label: 'Password',
           controller: passwordController,
-          decoration: InputDecoration(labelText: 'Password'),
+          hintText: 'Enter your password',
           obscureText: true,
         ),
         ElevatedButton(
