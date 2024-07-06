@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => HomePage(),
         '/login': (context) => LoginPage(),
-        // '/signup': (context) => SignUpPage(),
+        '/signup': (context) => SignUpPage(),
         '/main': (context) => MainPage(),
         '/group': (context) => GroupPage(
             groupId: ModalRoute.of(context)!.settings.arguments as int),
