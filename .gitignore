@@ -160,4 +160,6 @@ Temporary Items
 .history
 .ionide
 
+.idea/
+.metadata
 # End of https://www.toptal.com/developers/gitignore/api/macos,dart,flutter,visualstudiocode,git
