@@ -52,7 +52,8 @@ class MyApp extends StatelessWidget {
             groupName: "MadCamp 1",
             questionText: "Q2"),
         '/poll': (context) =>
-            PollPage(pollId: ModalRoute.of(context)!.settings.arguments as int),
+            PollPage(pollId: ModalRoute.of(context)!.settings.arguments as int,
+            questionText: "What are you doing?",),
         '/result': (context) => ResultPage(
             groupId: ModalRoute.of(context)!.settings.arguments as int),
         '/mypage': (context) => MyPage(),

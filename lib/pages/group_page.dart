@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nymmp_front/constants.dart';
 import '../components/header.dart';
 
 class GroupPage extends StatelessWidget {
@@ -28,7 +29,7 @@ class GroupPage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: 414), // 최대 너비를 414로 설정
+          constraints: BoxConstraints(maxWidth: kMaxWidth), // 최대 너비를 414로 설정
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
@@ -50,16 +51,31 @@ class GroupPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  width: double.infinity,
+                  child: Text(
+                    groupName,
+                    style: TextStyle(
+                      fontFamily: 'PatrickHand',
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 50.0),
                 child: Text(
-                  'MadCamp 1',
+                  questionText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontFamily: 'PatrickHand',
-                      fontSize: 70,
-                      fontWeight: FontWeight.w700),
+                    fontFamily: 'PatrickHand',
+                    fontSize: 70,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               SizedBox(height: 20),
@@ -78,7 +94,9 @@ class GroupPage extends StatelessWidget {
                         goldMedalUser,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 50, fontWeight: FontWeight.w400),
+                          fontSize: 50,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ],
@@ -103,7 +121,9 @@ class GroupPage extends StatelessWidget {
                         silverMedalUser,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 40, fontWeight: FontWeight.w400),
+                          fontSize: 40,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ],
@@ -128,7 +148,9 @@ class GroupPage extends StatelessWidget {
                         bronzeMedalUser,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w400),
+                          fontSize: 30,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ],
