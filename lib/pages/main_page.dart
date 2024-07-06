@@ -15,10 +15,9 @@ class MainPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('참여 중인 그룹', style: TextStyle(fontSize: 24)),
-            SizedBox(height: 20),
-            GroupTap(groupId: 1),
-            GroupTap(groupId: 2),
+            GroupTap(groupId: 1, groupName: "MADCAMP 1"),
+            SizedBox(height: 16),
+            GroupTap(groupId: 2, groupName: "MADCAMP 2"),
           ],
         ),
       ),
