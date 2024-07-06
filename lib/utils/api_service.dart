@@ -21,4 +21,22 @@ class ApiService {
       return {'success': false};
     }
   }
+
+  Future<Map<String, dynamic>> signUp({
+    required String id,
+    required String name,
+    required String email,
+    required String password,
+    required String group,
+    String? code,
+  }) async {
+    await Future.delayed(Duration(seconds: 1)); // 네트워크 지연 효과 추가
+
+    // 200 OK 응답을 가정
+    return {
+      'status': 200,
+      'message': 'Signup successful',
+      'data': {'userId': '12345'}
+    };
+  }
 }
