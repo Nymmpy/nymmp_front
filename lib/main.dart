@@ -20,6 +20,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(fontFamily: 'PatrickHand'),
+          bodyMedium: TextStyle(fontFamily: 'PatrickHand'),
+          bodySmall: TextStyle(fontFamily: 'PatrickHand'),
+          displayLarge: TextStyle(fontFamily: 'PatrickHand'),
+          displayMedium: TextStyle(fontFamily: 'PatrickHand'),
+          displaySmall: TextStyle(fontFamily: 'PatrickHand'),
+          headlineLarge: TextStyle(fontFamily: 'PatrickHand'),
+          headlineMedium: TextStyle(fontFamily: 'PatrickHand'),
+          headlineSmall: TextStyle(fontFamily: 'PatrickHand'),
+          titleLarge: TextStyle(fontFamily: 'PatrickHand'),
+          titleMedium: TextStyle(fontFamily: 'PatrickHand'),
+          titleSmall: TextStyle(fontFamily: 'PatrickHand'),
+          labelLarge: TextStyle(fontFamily: 'PatrickHand'),
+          labelMedium: TextStyle(fontFamily: 'PatrickHand'),
+          labelSmall: TextStyle(fontFamily: 'PatrickHand'),
+        ),
       ),
       initialRoute: '/home',
       routes: {
