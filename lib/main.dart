@@ -45,7 +45,10 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignUpPage(),
         '/main': (context) => MainPage(),
         '/group': (context) => GroupPage(
-            groupId: ModalRoute.of(context)!.settings.arguments as int),
+            groupId: ModalRoute.of(context)!.settings.arguments as int,
+            goldMedalUser: "Minsoo",
+            silverMedalUser: "Young",
+            bronzeMedalUser: "Chero",),
         '/poll': (context) =>
             PollPage(pollId: ModalRoute.of(context)!.settings.arguments as int),
         '/result': (context) => ResultPage(
