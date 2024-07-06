@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../utils/api_service.dart'; // API 서비스 경로 확인 필요
 import 'custom_text_field.dart'; // CustomTextField 임포트
+import 'custom_button.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _LoginState extends State<Login> {
   final TextEditingController passwordController = TextEditingController();
   final ApiService apiService = ApiService();
 
-  void _handleLogin() async {
+  void _handleLogin(BuildContext context) async {
     try {
       var response = await apiService.login(
         emailController.text,
@@ -49,9 +50,10 @@ class _LoginState extends State<Login> {
           hintText: 'Enter your password',
           obscureText: true,
         ),
-        ElevatedButton(
-          onPressed: _handleLogin,
-          child: Text('Login'),
+        SizedBox(height: 24),
+        CustomButton(
+          text: 'Login',
+          onPressed: () => _handleLogin(context),
         ),
       ],
     );
