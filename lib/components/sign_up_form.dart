@@ -1,5 +1,6 @@
-// lib/components/signup_form.dart
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -14,6 +15,43 @@ class _SignUpFormState extends State<SignUpForm> {
       TextEditingController();
 
   String selectedGroup = 'Group 1'; // 예시 그룹, 실제로는 동적으로 로드
+  bool isLoading = false; // 로딩 상태 표시
+
+  Future<void> signUp() async {
+    if (passwordController.text != confirmPasswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Passwords do not match")),
+      );
+      return;
+    }
+
+    setState(() {
+      isLoading = true;
+    });
+
+    var response = await http.post(
+      Uri.parse('https://api.yourdomain.com/users'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'name': nameController.text,
+        'email': emailController.text,
+        'password': passwordController.text,
+        'group': selectedGroup,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      Navigator.pushReplacementNamed(context, '/login');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to sign up")),
+      );
+    }
+
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +93,12 @@ class _SignUpFormState extends State<SignUpForm> {
           }).toList(),
         ),
         SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            // 여기에 회원가입 로직을 추가
-          },
-          child: Text('Sign up'),
-        ),
+        isLoading
+            ? CircularProgressIndicator()
+            : ElevatedButton(
+                onPressed: signUp,
+                child: Text('Sign up'),
+              ),
       ],
     );
   }
