@@ -8,6 +8,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false, // 뒤로 가기 버튼 제거
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
