@@ -4,12 +4,16 @@ import '../components/header.dart';
 
 class GroupPage extends StatelessWidget {
   final int groupId;
+  final String groupName;
+  final String questionText;
   final String goldMedalUser;
   final String silverMedalUser;
   final String bronzeMedalUser;
 
   GroupPage({
     required this.groupId,
+    required this.groupName,
+    required this.questionText,
     required this.goldMedalUser,
     required this.silverMedalUser,
     required this.bronzeMedalUser,
