@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'custom_text_field.dart'; // 커스텀 텍스트 필드 컴포넌트 임포트
+import 'custom_text_field.dart'; // 커스텀 텍스트 필드 임포트
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../utils/api_service.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -15,40 +16,32 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final TextEditingController codeController =
+      TextEditingController(); // 코드 입력 컨트롤러 추가
+  final ApiService apiService = ApiService();
 
-  String selectedGroup = 'Group 1'; // 예시 그룹
-  bool isLoading = false;
+  String selectedGroup = 'Group 1'; // 예시 그룹, 초기값 설정
+  bool isLoading = false; // 로딩 상태 표시
 
-  Future<void> signUp() async {
-    if (passwordController.text != confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Passwords do not match")),
-      );
-      return;
-    }
-
+  void signUp() async {
     setState(() {
       isLoading = true;
     });
 
-    var response = await http.post(
-      Uri.parse('https://api.yourdomain.com/users'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'id': idController.text,
-        'name': nameController.text,
-        'email': emailController.text,
-        'password': passwordController.text,
-        'group': selectedGroup,
-      }),
+    var response = await apiService.signUp(
+      id: idController.text,
+      name: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+      group: selectedGroup,
+      code: codeController.text,
     );
 
-    if (response.statusCode == 200) {
-      Navigator.pushReplacementNamed(context, '/login');
+    if (response['status'] == 200) {
+      Navigator.pushReplacementNamed(context, '/main');
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to sign up")),
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Failed to sign up")));
     }
 
     setState(() {
@@ -62,6 +55,21 @@ class _SignUpFormState extends State<SignUpForm> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         CustomTextField(label: 'ID', controller: idController),
+        DropdownButton<String>(
+          value: selectedGroup,
+          onChanged: (String? newValue) {
+            setState(() {
+              selectedGroup = newValue!;
+            });
+          },
+          items: <String>['Group 1', 'Group 2', 'Group 3', 'Group 4']
+              .map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        ),
         CustomTextField(label: 'Name', controller: nameController),
         CustomTextField(
             label: 'Email',
@@ -75,7 +83,7 @@ class _SignUpFormState extends State<SignUpForm> {
             label: 'Confirm Password',
             controller: confirmPasswordController,
             obscureText: true),
-        // Dropdown 및 기타 요소 포함...
+        CustomTextField(label: 'Code', controller: codeController),
         SizedBox(height: 20),
         isLoading
             ? CircularProgressIndicator()

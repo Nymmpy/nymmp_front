@@ -5,12 +5,14 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool obscureText;
   final TextInputType keyboardType;
+  final String hintText; // 힌트 텍스트 추가
 
   CustomTextField({
     required this.label,
     required this.controller,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.hintText = '',
   });
 
   @override
@@ -27,7 +29,7 @@ class CustomTextField extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: 'Enter your $label',
+            hintText: hintText, // 힌트 텍스트 사용
           ),
           obscureText: obscureText,
           keyboardType: keyboardType,
