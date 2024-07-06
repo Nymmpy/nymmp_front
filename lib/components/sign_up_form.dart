@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'custom_text_field.dart'; // 커스텀 텍스트 필드 컴포넌트 임포트
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -8,14 +9,15 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
+  final TextEditingController idController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  String selectedGroup = 'Group 1'; // 예시 그룹, 실제로는 동적으로 로드
-  bool isLoading = false; // 로딩 상태 표시
+  String selectedGroup = 'Group 1'; // 예시 그룹
+  bool isLoading = false;
 
   Future<void> signUp() async {
     if (passwordController.text != confirmPasswordController.text) {
@@ -33,6 +35,7 @@ class _SignUpFormState extends State<SignUpForm> {
       Uri.parse('https://api.yourdomain.com/users'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
+        'id': idController.text,
         'name': nameController.text,
         'email': emailController.text,
         'password': passwordController.text,
@@ -58,40 +61,21 @@ class _SignUpFormState extends State<SignUpForm> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        TextField(
-          controller: nameController,
-          decoration: InputDecoration(labelText: 'Name'),
-        ),
-        TextField(
-          controller: emailController,
-          decoration: InputDecoration(labelText: 'Email'),
-          keyboardType: TextInputType.emailAddress,
-        ),
-        TextField(
-          controller: passwordController,
-          decoration: InputDecoration(labelText: 'Password'),
-          obscureText: true,
-        ),
-        TextField(
-          controller: confirmPasswordController,
-          decoration: InputDecoration(labelText: 'Confirm Password'),
-          obscureText: true,
-        ),
-        DropdownButton<String>(
-          value: selectedGroup,
-          onChanged: (String? newValue) {
-            setState(() {
-              selectedGroup = newValue!;
-            });
-          },
-          items: <String>['Group 1', 'Group 2', 'Group 3', 'Group 4']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        ),
+        CustomTextField(label: 'ID', controller: idController),
+        CustomTextField(label: 'Name', controller: nameController),
+        CustomTextField(
+            label: 'Email',
+            controller: emailController,
+            keyboardType: TextInputType.emailAddress),
+        CustomTextField(
+            label: 'Password',
+            controller: passwordController,
+            obscureText: true),
+        CustomTextField(
+            label: 'Confirm Password',
+            controller: confirmPasswordController,
+            obscureText: true),
+        // Dropdown 및 기타 요소 포함...
         SizedBox(height: 20),
         isLoading
             ? CircularProgressIndicator()
