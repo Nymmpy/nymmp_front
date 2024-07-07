@@ -3,8 +3,12 @@ import 'package:nymmp_front/components/custom_button.dart';
 
 class PollPage extends StatelessWidget {
   final int pollId;
+  final String questionText;
 
-  PollPage({required this.pollId});
+  PollPage({
+    required this.pollId,
+    required this.questionText,
+  });
 
   @override
   Widget build(BuildContext context) {

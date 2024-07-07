@@ -7,9 +7,11 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Sign Up')),
-      body: SingleChildScrollView(
-        // 스크롤 가능하게 만듦
-        child: SignUpForm(), // SignUpForm을 로드
+      body: Center(
+        // Center 위젯으로 감쌈
+        child: SingleChildScrollView(
+          child: SignUpForm(),
+        ),
       ),
     );
   }
