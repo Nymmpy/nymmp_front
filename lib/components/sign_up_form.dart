@@ -11,9 +11,8 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  final TextEditingController idController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -29,7 +28,6 @@ class _SignUpFormState extends State<SignUpForm> {
     });
 
     var response = await apiService.signUp(
-      id: idController.text,
       name: nameController.text,
       email: emailController.text,
       password: passwordController.text,
@@ -53,9 +51,14 @@ class _SignUpFormState extends State<SignUpForm> {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center, // 가로 방향 중앙 정렬 추가
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        CustomTextField(label: 'ID', controller: idController),
+        CustomTextField(
+          label: 'enter your email',
+          controller: emailController,
+          keyboardType: TextInputType.emailAddress,
+        ),
+        SizedBox(height: 8),
         DropdownButton<String>(
           value: selectedGroup,
           onChanged: (String? newValue) {
@@ -71,20 +74,28 @@ class _SignUpFormState extends State<SignUpForm> {
             );
           }).toList(),
         ),
-        CustomTextField(label: 'Name', controller: nameController),
+        SizedBox(height: 8),
         CustomTextField(
-            label: 'Email',
-            controller: emailController,
-            keyboardType: TextInputType.emailAddress),
+          label: 'enter your Name',
+          controller: nameController,
+        ),
+        SizedBox(height: 8),
         CustomTextField(
-            label: 'Password',
-            controller: passwordController,
-            obscureText: true),
+          label: 'enter your Password',
+          controller: passwordController,
+          obscureText: true,
+        ),
+        SizedBox(height: 8),
         CustomTextField(
-            label: 'Confirm Password',
-            controller: confirmPasswordController,
-            obscureText: true),
-        CustomTextField(label: 'Code', controller: codeController),
+          label: 'check your Password',
+          controller: confirmPasswordController,
+          obscureText: true,
+        ),
+        SizedBox(height: 8),
+        CustomTextField(
+          label: 'CODE',
+          controller: codeController,
+        ),
         SizedBox(height: 24),
         isLoading
             ? CircularProgressIndicator()
