@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../components/custom_button.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -9,13 +11,14 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/login'),
-              child: Text('Sign In'),
+            CustomButton(
+              text: 'Sign In',
+              onPressed: () => context.go('/login'),
             ),
-            ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/signup'),
-              child: Text('Create an Account'),
+            SizedBox(height: 24),
+            CustomButton(
+              text: 'Create an Account',
+              onPressed: () => context.go('/signup'),
             ),
           ],
         ),

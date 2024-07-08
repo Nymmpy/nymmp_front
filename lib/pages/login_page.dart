@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import '../components/login.dart'; // 로그인 로직이 포함된 컴포넌트
-import '../components/header.dart'; // 사용자 정의 헤더
+import '../components/login.dart';
+import '../components/header.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sign Up')),
+      appBar: AppBar(title: Text('Login')),
       body: Container(
+        width: MediaQuery.of(context).size.width, // 전체 너비 설정
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Login(), // 사용자 로그인을 처리하는 컴포넌트
+            Login(),
           ],
         ),
       ),
