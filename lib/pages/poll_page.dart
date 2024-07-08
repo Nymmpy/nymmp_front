@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nymmp_front/components/custom_button.dart';
 import 'package:go_router/go_router.dart';
 
-class PollPage extends StatelessWidget {
+class PollPage extends StatefulWidget {
   final int pollId;
   final String questionText;
   final List<Map<String, dynamic>> options;
@@ -17,8 +17,6 @@ class PollPage extends StatelessWidget {
   });
 
   @override
-<<<<<<< Updated upstream
-=======
   _PollPageState createState() => _PollPageState();
 }
 
@@ -38,10 +36,8 @@ class _PollPageState extends State<PollPage> {
   }
 
   @override
->>>>>>> Stashed changes
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: Text('투표 $pollId')),
       body: Center(
         child: Container(
           constraints: BoxConstraints(maxWidth: 414), // 최대 너비를 414로 설정
@@ -83,7 +79,7 @@ class _PollPageState extends State<PollPage> {
               SizedBox(height: 20),
               // 두 번째 요소: 질문 텍스트
               Text(
-                questionText,
+                widget.questionText,
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w400,
@@ -93,31 +89,10 @@ class _PollPageState extends State<PollPage> {
               // 세 번째 요소: 2x2 버튼 배열
               Container(
                 width: double.infinity,
-                height: 180,
+                height: 200, // height를 약간 키움
                 child: Padding(
                   padding: EdgeInsets.all(20.0), // 큰 사각형 밖에 패딩 추가
                   child: Stack(
-<<<<<<< Updated upstream
-                    children: [
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Container(
-                          width: 116,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Option 1",
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-=======
                     children: widget.options.asMap().entries.map((entry) {
                       int index = entry.key;
                       Map<String, dynamic> option = entry.value;
@@ -145,7 +120,6 @@ class _PollPageState extends State<PollPage> {
                                   color: Colors.grey.withOpacity(0.5),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
->>>>>>> Stashed changes
                               ),
                               ElevatedButton(
                                 onPressed: () => _handleOptionSelect(optionId.toString()),
@@ -179,82 +153,8 @@ class _PollPageState extends State<PollPage> {
                             ],
                           ),
                         ),
-<<<<<<< Updated upstream
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          width: 116,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Option 2",
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          width: 116,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Option 3",
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          width: 116,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Option 4",
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-=======
                       );
                     }).toList(),
->>>>>>> Stashed changes
                   ),
                 ),
               ),
@@ -267,7 +167,7 @@ class _PollPageState extends State<PollPage> {
                     onPressed: () {},
                     text: "Shuffle",
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 20),
                   CustomButton(
                     onPressed: () {},
                     text: "Skip",
