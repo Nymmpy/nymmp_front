@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import '../constants.dart';
 
 class Header extends StatelessWidget {
@@ -45,9 +46,9 @@ class Header extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       if (isMyPage) {
-                        Navigator.pushNamed(context, '/main');
+                        context.go('/main');
                       } else {
-                        Navigator.pushNamed(context, '/mypage');
+                        context.go('/mypage');
                       }
                     },
                     child: SvgPicture.asset(

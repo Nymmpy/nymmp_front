@@ -1,5 +1,5 @@
-// lib/components/login.dart
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../utils/api_service.dart'; // API 서비스 경로 확인 필요
 import 'custom_text_field.dart'; // CustomTextField 임포트
 import 'custom_button.dart';
@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
         passwordController.text,
       );
       if (response['success']) {
-        Navigator.pushReplacementNamed(context, '/main');
+        context.go('/main');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
