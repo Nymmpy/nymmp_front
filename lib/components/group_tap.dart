@@ -12,7 +12,7 @@ class GroupTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double maxWidth = constraints.maxWidth;
+        double maxWidth = constraints.maxWidth; // 좌우 패딩을 고려한 최대 너비
         return Container(
           width: maxWidth,
           height: 125,

@@ -65,6 +65,7 @@ class GroupPage extends StatelessWidget {
                   ),
                 ),
               ),
+
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 50.0),
@@ -77,6 +78,10 @@ class GroupPage extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+              ),
+                            Divider( // 검은 선 추가
+                color: Colors.black,
+                thickness: 1.0,
               ),
               SizedBox(height: 20),
               Padding(
