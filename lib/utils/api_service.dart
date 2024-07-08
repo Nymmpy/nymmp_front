@@ -23,7 +23,6 @@ class ApiService {
   }
 
   Future<Map<String, dynamic>> signUp({
-    required String id,
     required String name,
     required String email,
     required String password,
