@@ -51,9 +51,12 @@ class MyApp extends StatelessWidget {
         path: '/poll/:pollId',
         builder: (context, state) {
           final pollId = int.parse(state.params['pollId']!);
+          final poll = pollData.firstWhere((element) => element['poll_id'] == pollId);
           return PollPage(
-            pollId: pollId,
-            questionText: "What are you doing?",
+            pollId: poll['poll_id'],
+            questionText: poll['question'],
+            options: poll['options'],
+            totalCount: poll['total_count'],
           );
         },
       ),
@@ -102,3 +105,139 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// Dummy poll data
+List<Map<String, dynamic>> pollData = [
+  {
+    "poll_id": 1,
+    "question": "Which sports are you interested in playing?",
+    "total_count": 100,
+    "options": [
+      {"option_id": 1, "user_id": 1, "username": "User1", "vote_count": 10},
+      {"option_id": 2, "user_id": 2, "username": "User2", "vote_count": 20},
+      {"option_id": 3, "user_id": 3, "username": "User3", "vote_count": 30},
+      {"option_id": 4, "user_id": 4, "username": "User4", "vote_count": 40},
+    ],
+  },
+  {
+    "poll_id": 2,
+    "question": "What is your favorite color?",
+    "total_count": 80,
+    "options": [
+      {"option_id": 1, "user_id": 5, "username": "User5", "vote_count": 10},
+      {"option_id": 2, "user_id": 6, "username": "User6", "vote_count": 20},
+      {"option_id": 3, "user_id": 7, "username": "User7", "vote_count": 25},
+      {"option_id": 4, "user_id": 8, "username": "User8", "vote_count": 25},
+    ],
+  },
+  {
+    "poll_id": 3,
+    "question": "What is your favorite food?",
+    "total_count": 90,
+    "options": [
+      {"option_id": 1, "user_id": 9, "username": "User9", "vote_count": 15},
+      {"option_id": 2, "user_id": 10, "username": "User10", "vote_count": 25},
+      {"option_id": 3, "user_id": 11, "username": "User11", "vote_count": 20},
+      {"option_id": 4, "user_id": 12, "username": "User12", "vote_count": 30},
+    ],
+  },
+  {
+    "poll_id": 4,
+    "question": "Which city do you want to visit?",
+    "total_count": 70,
+    "options": [
+      {"option_id": 1, "user_id": 13, "username": "User13", "vote_count": 15},
+      {"option_id": 2, "user_id": 14, "username": "User14", "vote_count": 10},
+      {"option_id": 3, "user_id": 15, "username": "User15", "vote_count": 20},
+      {"option_id": 4, "user_id": 16, "username": "User16", "vote_count": 25},
+    ],
+  },
+  {
+    "poll_id": 5,
+    "question": "What is your favorite movie genre?",
+    "total_count": 110,
+    "options": [
+      {"option_id": 1, "user_id": 17, "username": "User17", "vote_count": 30},
+      {"option_id": 2, "user_id": 18, "username": "User18", "vote_count": 20},
+      {"option_id": 3, "user_id": 19, "username": "User19", "vote_count": 40},
+      {"option_id": 4, "user_id": 20, "username": "User20", "vote_count": 20},
+    ],
+  },
+  {
+    "poll_id": 6,
+    "question": "Which season do you like the most?",
+    "total_count": 90,
+    "options": [
+      {"option_id": 1, "user_id": 1, "username": "User1", "vote_count": 25},
+      {"option_id": 2, "user_id": 2, "username": "User2", "vote_count": 20},
+      {"option_id": 3, "user_id": 3, "username": "User3", "vote_count": 30},
+      {"option_id": 4, "user_id": 4, "username": "User4", "vote_count": 15},
+    ],
+  },
+  {
+    "poll_id": 7,
+    "question": "What is your favorite animal?",
+    "total_count": 95,
+    "options": [
+      {"option_id": 1, "user_id": 5, "username": "User5", "vote_count": 20},
+      {"option_id": 2, "user_id": 6, "username": "User6", "vote_count": 25},
+      {"option_id": 3, "user_id": 7, "username": "User7", "vote_count": 30},
+      {"option_id": 4, "user_id": 8, "username": "User8", "vote_count": 20},
+    ],
+  },
+  {
+    "poll_id": 8,
+    "question": "What is your favorite music genre?",
+    "total_count": 85,
+    "options": [
+      {"option_id": 1, "user_id": 9, "username": "User9", "vote_count": 15},
+      {"option_id": 2, "user_id": 10, "username": "User10", "vote_count": 30},
+      {"option_id": 3, "user_id": 11, "username": "User11", "vote_count": 20},
+      {"option_id": 4, "user_id": 12, "username": "User12", "vote_count": 20},
+    ],
+  },
+  {
+    "poll_id": 9,
+    "question": "What is your favorite book genre?",
+    "total_count": 75,
+    "options": [
+      {"option_id": 1, "user_id": 13, "username": "User13", "vote_count": 20},
+      {"option_id": 2, "user_id": 14, "username": "User14", "vote_count": 10},
+      {"option_id": 3, "user_id": 15, "username": "User15", "vote_count": 25},
+      {"option_id": 4, "user_id": 16, "username": "User16", "vote_count": 20},
+    ],
+  },
+  {
+    "poll_id": 10,
+    "question": "What is your favorite hobby?",
+    "total_count": 65,
+    "options": [
+      {"option_id": 1, "user_id": 17, "username": "User17", "vote_count": 15},
+      {"option_id": 2, "user_id": 18, "username": "User18", "vote_count": 20},
+      {"option_id": 3, "user_id": 19, "username": "User19", "vote_count": 10},
+      {"option_id": 4, "user_id": 20, "username": "User20", "vote_count": 20},
+    ],
+  },
+  {
+    "poll_id": 11,
+    "question": "What is your favorite holiday destination?",
+    "total_count": 70,
+    "options": [
+      {"option_id": 1, "user_id": 1, "username": "User1", "vote_count": 20},
+      {"option_id": 2, "user_id": 2, "username": "User2", "vote_count": 15},
+      {"option_id": 3, "user_id": 3, "username": "User3", "vote_count": 25},
+      {"option_id": 4, "user_id": 4, "username": "User4", "vote_count": 10},
+    ],
+  },
+  {
+    "poll_id": 12,
+    "question": "What is your favorite drink?",
+    "total_count": 60,
+    "options": [
+      {"option_id": 1, "user_id": 5, "username": "User5", "vote_count": 15},
+      {"option_id": 2, "user_id": 6, "username": "User6", "vote_count": 10},
+      {"option_id": 3, "user_id": 7, "username": "User7", "vote_count": 20},
+      {"option_id": 4, "user_id": 8, "username": "User8", "vote_count": 15},
+    ],
+  },
+];
