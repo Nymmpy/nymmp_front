@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../components/custom_button.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,12 +13,12 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             CustomButton(
               text: 'Sign In',
-              onPressed: () => Navigator.pushNamed(context, '/login'),
+              onPressed: () => context.go('/login'),
             ),
             SizedBox(height: 24),
             CustomButton(
               text: 'Create an Account',
-              onPressed: () => Navigator.pushNamed(context, '/signup'),
+              onPressed: () => context.go('/signup'),
             ),
           ],
         ),

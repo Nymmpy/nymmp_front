@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../constants.dart';
+import 'package:go_router/go_router.dart';
 
 class GroupTap extends StatelessWidget {
   final int groupId;
@@ -12,7 +12,7 @@ class GroupTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double maxWidth = constraints.maxWidth; // 좌우 패딩을 고려한 최대 너비
+        double maxWidth = constraints.maxWidth;
         return Container(
           width: maxWidth,
           height: 125,
@@ -43,16 +43,14 @@ class GroupTap extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/poll',
-                            arguments: groupId);
+                        context.go('/poll/$groupId');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white, // 버튼 배경을 흰색으로 설정
-                        minimumSize: Size(40, 40), // 버튼 크기 설정
-                        side: BorderSide(
-                            color: Colors.black, width: 1), // 얇은 검은색 테두리
+                        backgroundColor: Colors.white,
+                        minimumSize: Size(40, 40),
+                        side: BorderSide(color: Colors.black, width: 1),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8), // 모서리 반경 설정
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                       child: SvgPicture.asset(
@@ -61,19 +59,17 @@ class GroupTap extends StatelessWidget {
                         height: 20,
                       ),
                     ),
-                    SizedBox(height: 10), // 버튼 사이 간격
+                    SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/group',
-                            arguments: groupId);
+                        context.go('/group/$groupId');
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white, // 버튼 배경을 흰색으로 설정
-                        minimumSize: Size(40, 40), // 버튼 크기 설정
-                        side: BorderSide(
-                            color: Colors.black, width: 1), // 얇은 검은색 테두리
+                        backgroundColor: Colors.white,
+                        minimumSize: Size(40, 40),
+                        side: BorderSide(color: Colors.black, width: 1),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8), // 모서리 반경 설정
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                       child: SvgPicture.asset(
