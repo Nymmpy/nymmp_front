@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'custom_text_field.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import '../utils/api_service.dart';
 import 'custom_button.dart';
 
@@ -14,14 +12,14 @@ class _SignUpFormState extends State<SignUpForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
   final ApiService apiService = ApiService();
 
-  String selectedGroup = 'Group 1';
+  int selectedGroupId = 1;
   bool isLoading = false;
 
+  int kakaoId = 1234;
   void signUp() async {
     setState(() {
       isLoading = true;
@@ -31,20 +29,23 @@ class _SignUpFormState extends State<SignUpForm> {
       name: nameController.text,
       email: emailController.text,
       password: passwordController.text,
-      group: selectedGroup,
-      code: codeController.text,
+      groupId: selectedGroupId,
+      kakaoId: kakaoId
+      // code: codeController.text,
     );
-
-    if (response['status'] == 200) {
-      Navigator.pushReplacementNamed(context, '/home');
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Failed to sign up")));
-    }
 
     setState(() {
       isLoading = false;
     });
+
+    if (response['status'] == 200) {
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      print("${response}");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to sign up")),
+      );
+    }
   }
 
   @override
@@ -54,40 +55,51 @@ class _SignUpFormState extends State<SignUpForm> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         CustomTextField(
-          label: 'enter your email',
+          label: 'Enter your email',
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
         ),
         SizedBox(height: 8),
-        DropdownButton<String>(
-          value: selectedGroup,
-          onChanged: (String? newValue) {
+        DropdownButton<int>(
+          value: selectedGroupId,
+          onChanged: (int? newValue) {
             setState(() {
-              selectedGroup = newValue!;
+              selectedGroupId = newValue!;
             });
           },
-          items: <String>['Group 1', 'Group 2', 'Group 3', 'Group 4']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
+          items: <DropdownMenuItem<int>>[
+            DropdownMenuItem<int>(
+              value: 1,
+              child: Text('Group 1'),
+            ),
+            DropdownMenuItem<int>(
+              value: 2,
+              child: Text('Group 2'),
+            ),
+            DropdownMenuItem<int>(
+              value: 3,
+              child: Text('Group 3'),
+            ),
+            DropdownMenuItem<int>(
+              value: 4,
+              child: Text('Group 4'),
+            ),
+          ],
         ),
         SizedBox(height: 8),
         CustomTextField(
-          label: 'enter your Name',
+          label: 'Enter your name',
           controller: nameController,
         ),
         SizedBox(height: 8),
         CustomTextField(
-          label: 'enter your Password',
+          label: 'Enter your password',
           controller: passwordController,
           obscureText: true,
         ),
         SizedBox(height: 8),
         CustomTextField(
-          label: 'check your Password',
+          label: 'Check your password',
           controller: confirmPasswordController,
           obscureText: true,
         ),
