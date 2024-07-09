@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   flutter_svg: ^1.0.0
   http: ^0.13.3
+  url_launcher: ^6.0.20 
   google_fonts: ^2.1.0
 
   go_router: ^6.0.0
@@ -70,6 +71,7 @@ flutter:
     - assets/silvermedal.svg
     - assets/bronzemedal.svg
     - assets/Home.svg
+    - assets/kakao_login_medium_narrow.png
     - assets/fonts/
   fonts:
     - family: PatrickHand
