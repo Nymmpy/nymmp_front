@@ -10,6 +10,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 100), // 상단에 일정한 공간을 추가
               Text(
                 'login',
                 style: TextStyle(
@@ -33,6 +34,7 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 32),
               Login(),
+              SizedBox(height: 100), // 하단에 일정한 공간을 추가
             ],
           ),
         ),

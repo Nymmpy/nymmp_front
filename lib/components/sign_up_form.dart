@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'custom_text_field.dart';
 import '../utils/api_service.dart';
 import 'custom_button.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -38,14 +39,19 @@ class _SignUpFormState extends State<SignUpForm> {
       isLoading = false;
     });
 
-    if (response['status'] == 200) {
-      Navigator.pushReplacementNamed(context, '/home');
-    } else {
-      print("${response}");
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Failed to sign up")),
+        print(response);
+    if(response['success']){
+      if(response['success']==true){
+
+        context.go("/home");
+      }
+    }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar( content: Text("Failed to sign up")),
       );
     }
+
+
   }
 
   @override

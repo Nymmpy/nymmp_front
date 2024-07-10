@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:go_router/go_router.dart';
 import '../components/custom_button.dart';
 import 'package:url_launcher/url_launcher.dart'; // 추rk된 패키지
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
